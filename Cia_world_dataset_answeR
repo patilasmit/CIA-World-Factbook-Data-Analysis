@@ -1,0 +1,36 @@
+create database cia_factbook;
+use cia_factbook;
+select * from factbook;
+--(you can directly load data or create table)
+--project idea 
+--You will learn how to use SQL to answer the following analytical questions:
+ 
+--1.Which country has the highest population? 
+select country, max(population) as high_pop
+from factbook
+group by country
+order by high_pop desc
+
+--2.Which country has the least number of people? 
+select country , population
+from factbook
+order by population asc
+limit 1
+
+--3.Which country is witnessing the highest population growth? 
+select country , population_growth_rate
+from factbook
+order by population_growth_rate  desc
+limit 1
+
+--4.Which country has an extraordinary number for the population? 
+select country , max(population) as extra_ordinary
+from factbook
+group by country 
+order by extra_ordinary desc
+
+--5.Which is the most densely populated country in the world? 
+select country ,area , population , (area/population) as densely_pop
+from factbook
+order by densely_pop desc
+limit 1
